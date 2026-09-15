@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rang • The Living Atlas of Indian Art</title>
+  <meta name="description" content="An interactive digital atlas exploring India's art, artists, places and traditions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#">
+      <span class="brand-mark">रं</span>
+      <span><b>RANG</b><small>Living Atlas of Indian Art</small></span>
+    </a>
+    <nav>
+      <a href="#explore">Explore</a>
+      <a href="#traditions">Traditions</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#about">About</a>
+    </nav>
+    <button class="nav-btn" id="randomBtn">Surprise me <span>↗</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A DIGITAL MUSEUM WITHOUT WALLS</p>
+        <h1>India, told<br>through <em>art.</em></h1>
+        <p class="hero-text">Travel across four millennia of paintings, sculpture, textiles and architecture — one place, one story at a time.</p>
+        <a href="#explore" class="primary-btn">Start exploring <span>↓</span></a>
+      </div>
+      <div class="hero-art">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div>
+        <div class="mandala">✦</div>
+        <div class="hero-label"><span>18</span><small>cultural landmarks</small></div>
+      </div>
+    </section>
+
+    <section id="explore" class="explore-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / EXPLORE THE ATLAS</p>
+          <h2>Where stories<br>meet the map.</h2>
+        </div>
+        <p class="section-note">Select a marker or search for a place, movement, artist or artwork. Open a dossier to discover the history behind it.</p>
+      </div>
+
+      <div class="atlas-shell">
+        <aside class="control-panel">
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="search" type="search" placeholder="Search the atlas..." autocomplete="off">
+            <kbd>⌘ K</kbd>
+          </div>
+          <div class="filter-title"><span>FILTER BY</span><button id="clearFilters">Clear</button></div>
+          <div class="chips" id="chips">
+            <button class="chip active" data-type="all">All</button>
+            <button class="chip" data-type="painting">Painting</button>
+            <button class="chip" data-type="sculpture">Sculpture</button>
+            <button class="chip" data-type="architecture">Architecture</button>
+            <button class="chip" data-type="textile">Textile</button>
+            <button class="chip" data-type="folk">Folk & Tribal</button>
+          </div>
+          <div class="results-head"><span id="resultCount">18</span> places <span class="dot">•</span> <span>India</span></div>
+          <div id="placeList" class="place-list"></div>
+        </aside>
+        <div class="map-wrap">
+          <div id="map"></div>
+          <div class="map-legend">
+            <span><i class="legend-dot"></i> Cultural landmark</span>
+            <span><i class="legend-line"></i> Historical journey</span>
+          </div>
+          <div class="map-tools">
+            <button id="zoomIn">+</button><button id="zoomOut">−</button><button id="resetMap">⌂</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="traditions" class="traditions">
+      <div class="section-heading compact">
+        <div><p class="eyebrow">02 / TRADITIONS</p><h2>A country.<br>Many visual languages.</h2></div>
+        <p class="section-note">From ritual walls to royal ateliers, Indian art is less a single story than a conversation between regions, communities and centuries.</p>
+      </div>
+      <div class="tradition-grid">
+        <article class="trad-card featured"><span class="num">01</span><div class="pattern">◈</div><h3>Miniature<br>Painting</h3><p>Delicate worlds of court, devotion and poetry.</p><button data-jump="Jaipur">Explore tradition →</button></article>
+        <article class="trad-card"><span class="num">02</span><div class="pattern">✺</div><h3>Folk &<br>Tribal</h3><p>Living visual traditions rooted in community and ritual.</p><button data-jump="Madhubani">Explore tradition →</button></article>
+        <article class="trad-card"><span class="num">03</span><div class="pattern">⌘</div><h3>Sculpture &<br>Temple Arts</h3><p>Stone, bronze and sacred architecture in dialogue.</p><button data-jump="Chola">Explore tradition →</button></article>
+        <article class="trad-card"><span class="num">04</span><div class="pattern">◎</div><h3>Textile &<br>Craft</h3><p>Woven memory, natural dyes and generations of skill.</p><button data-jump="Varanasi">Explore tradition →</button></article>
+      </div>
+    </section>
+
+    <section id="timeline" class="timeline-section">
+      <p class="eyebrow">03 / A SHORT TIMELINE</p>
+      <h2>Four thousand years<br>in a few moments.</h2>
+      <div class="timeline">
+        <div class="time-item"><span>2500 BCE</span><b>Indus Valley</b><p>Seals, terracotta and early urban craft.</p></div>
+        <div class="time-item"><span>300 BCE</span><b>Mauryan & Buddhist</b><p>Stupas, pillars and narrative sculpture.</p></div>
+        <div class="time-item"><span>600–1200</span><b>Temple Age</b><p>Chola bronzes and monumental stone temples.</p></div>
+        <div class="time-item"><span>1500–1800</span><b>Miniature Traditions</b><p>Mughal, Rajput and Pahari painting flourish.</p></div>
+        <div class="time-item"><span>1900+</span><b>Modern India</b><p>Bengal School and new visual vocabularies.</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div><p class="eyebrow">04 / ABOUT</p><h2>Designed as a<br>digital museum.</h2></div>
+      <div><p>This student project reimagines an atlas as an immersive cultural experience. Every marker is an invitation to slow down, look closer and connect a place with the people and practices that shaped it.</p><p class="small">Built with HTML, CSS, JavaScript and Leaflet. Educational use.</p></div>
+    </section>
+  </main>
+
+  <div class="prepared-by">Prepared by <strong>Harsh Sanjay Tambekar</strong> · Reg. No. <strong>RA2411030010223</strong></div>
+  <footer><span>RANG © 2026</span><span>Indian Art • Interactive Atlas</span><span>Made for learning, built for curiosity.</span></footer>
+
+  <div class="modal-backdrop" id="modal">
+    <article class="dossier">
+      <button class="close" id="closeModal">×</button>
+      <div class="dossier-top"><span id="modalType">PAINTING</span><span id="modalIndex">01 / 18</span></div>
+      <h2 id="modalTitle">Title</h2>
+      <p class="location" id="modalLocation"></p>
+      <div class="dossier-grid">
+        <div class="art-visual" id="artVisual"><span>RANG</span></div>
+        <div>
+          <p id="modalDescription"></p>
+          <div class="facts">
+            <div><small>PERIOD</small><b id="modalPeriod"></b></div>
+            <div><small>KNOWN FOR</small><b id="modalKnown"></b></div>
+            <div><small>ARTISTS / TRADITION</small><b id="modalArtist"></b></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-nav"><button id="prev">← Previous</button><button id="next">Next →</button></div>
+    </article>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
+</html>
